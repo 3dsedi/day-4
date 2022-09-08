@@ -1,0 +1,28 @@
+{
+  "name": "basics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start-dev-server": "NODE_ENV=development nodemon index.js",
+    "start-dev-client": "webpack --mode=development --watch",
+    "start": "npm-run-all --parallel start-dev-client start-dev-server",
+    "e2e": "NODE_ENV=development cypress run",
+    "clean": "rm ./server/public/javascript/* || true",
+    "predev-release": "npm run clean",
+    "dev-release": "webpack --mode=development",
+    "preprod-release": "npm run clean",
+    "prod-release": "webpack --mode=production",
+    "prestart-production": "npm run prod-release",
+    "start-production": "NODE_ENV=production node index.js"
+  },
+  "devDependencies": {
+    "cypress": "^9.6.0",
+    "jsdom": "16.4.0",
+    "nodemon": "2.0.3",
+    "npm-run-all": "^4.1.5",
+    "request": "^2.88.2",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.9.0"
+  }
+}
